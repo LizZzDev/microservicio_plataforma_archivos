@@ -1,27 +1,44 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Drive.Models;
 
+[Table("users")]
 public class User
 {
     [Key]
-    [Required]
+    [Column("id")]
     public int Id { get; set; }
 
-    [Required]
-    public DateTime Birth { get; set; }
+    [Column("birth_date")]
+    public DateTime? Birth { get; set; }
 
     [Required]
+    [Column("name")]
     public string Name { get; set; } = null!;
 
     [Required]
+    [Column("email")]
     public string Email { get; set; } = null!;
 
     [Required]
+    [Column("password")]
     public string Password { get; set; } = null!;
+
+    [Column("role")]
+    public string Role { get; set; } = "user";
+
+    [Column("is_active")]
+    public bool IsActive { get; set; }
+
+    [Column("created_at")]
+    public DateTime CreatedAt { get; set; }
+
+    [Column("updated_at")]
+    public DateTime UpdatedAt { get; set; }
 
 
     public static string GetHash(string input)
