@@ -8,10 +8,24 @@ services:
       POSTGRES_PASSWORD: p_pass
       POSTGRES_DB: P_DB
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    container_name: p_backend
+    working_dir: /app
+    volumes:
+      - ./back:/app
+    command: dotnet watch run --urls=http://0.0.0.0:8080
+    environment:
+      ASPNETCORE_URLS: "http://+:8080"
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=P_DB;Username=p_user;Password=p_pass"
+    ports:
+      - "5000:8080"
+    depends_on:
+      - db
 
 volumes:
   postgres_data:
