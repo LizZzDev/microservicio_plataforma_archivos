@@ -21,7 +21,7 @@ public class UserController : ControllerBase
     public async Task<IActionResult> GetUsers(int page = 1, int pageSize = 10)
     {        
         List<User> users = await _context.Users
-            .Skip(page)
+            .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
@@ -55,6 +55,7 @@ public class UserController : ControllerBase
     {
         Name = userData.Name!,
         Email = userData.Email!,
+        Birth = userData.Birth,
         Password = Drive.Models.User.GetHash(userData.Password!),
         CreatedAt = DateTime.UtcNow,
         UpdatedAt = DateTime.UtcNow,

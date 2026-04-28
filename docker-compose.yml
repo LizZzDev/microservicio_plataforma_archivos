@@ -23,7 +23,7 @@ services:
       ASPNETCORE_URLS: "http://+:8080"
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=P_DB;Username=p_user;Password=p_pass"
     ports:
-      - "5000:8080"
+      - "5217:8080"
     depends_on:
       - db
 

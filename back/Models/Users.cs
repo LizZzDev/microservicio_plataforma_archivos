@@ -14,7 +14,7 @@ public class User
     public int Id { get; set; }
 
     [Column("birth_date")]
-    public DateTime? Birth { get; set; }
+    public DateOnly? Birth { get; set; }
 
     [Required]
     [Column("name")]
@@ -69,7 +69,7 @@ public class CreateUser
 
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Required]
-    public DateTime Birth { get; set; }
+    public DateOnly Birth { get; set; }
 
     [DataType(DataType.Password)]
     [Required]
