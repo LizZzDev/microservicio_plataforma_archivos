@@ -127,7 +127,7 @@ const Users = () => {
             "Content-Type": "application/json",
             ...getAuthHeader()
           },
-          body: JSON.stringify(isActiveBool)
+          body: JSON.stringify({ isActive: isActiveBool })
         });
       } else if (field === "role") {
         // realiza la peticion de actualizacion al endpoint de roles del servidor
@@ -137,7 +137,7 @@ const Users = () => {
             "Content-Type": "application/json",
             ...getAuthHeader()
           },
-          body: JSON.stringify(newValue.toLowerCase())
+          body: JSON.stringify({ role: newValue.toLowerCase() })
         });
       }
       

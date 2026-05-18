@@ -48,7 +48,7 @@ public class UserController : ControllerBase
     public async Task<IActionResult> CreateUser([FromBody] CreateUser userData)
     {
         if (await _context.Users.AnyAsync(u => u.Email == userData.Email)) // comprueba que el email no esté tomado
-            return BadRequest("Email is already in use.");
+            return BadRequest("El correo electronico ya está en uso");
         
         var user = new User
         {
@@ -77,10 +77,10 @@ public class UserController : ControllerBase
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == credentials.Email); // busca concordancia de email
         
         if (user == null || user.Password != Drive.Models.User.GetHash(credentials.Password)) // valida existencia y hash del password
-            return Unauthorized(new { message = "Incorrect email or password." });
+            return Unauthorized(new { message = "Correo electrónico o contraseña incorrectos." });
 
         if (!user.IsActive) // bloquea el acceso si la cuenta se encuentra deshabilitada
-            return StatusCode(403, new { message = "Inactive account. Contact an administrator." });
+            return StatusCode(403, new { message = "Cuenta inactiva. Contacte a un administrador." });
 
         return Ok(new { token = GenerateJwtToken(user) }); // genera y despacha el token de acceso si todo es correcto
     }
@@ -98,21 +98,21 @@ public class UserController : ControllerBase
         var myIdString = User.FindFirstValue(ClaimTypes.NameIdentifier); // extrae el id del administrador desde su token actual
         if (myIdString == id.ToString() && userToEdit.Role == "admin" && dto.Role.ToLower() != "admin")
         {
-            return BadRequest("Action denied: You cannot remove your own admin role."); // candado de seguridad para no perder el único admin
+            return BadRequest("Acción denegada: No puedes eliminar tu propio rol de administrador.a"); // candado de seguridad para no perder el único admin
         }
 
         if (userToEdit.Email != dto.Email && await _context.Users.AnyAsync(u => u.Email == dto.Email))
         {
-            return BadRequest("Email is already in use by another user."); // evita colisiones si se intenta cambiar a un email ocupado
+            return BadRequest("El correo electrónico ya está en uso por otro usuario."); // evita colisiones si se intenta cambiar a un email ocupado
         }
 
         if (!string.IsNullOrWhiteSpace(dto.Password)) // evalúa si el administrador ingresó una nueva contraseña para cambiarla
         {
             if (dto.Password != dto.ConfirmPassword)
-                return BadRequest("Passwords do not match.");
+                return BadRequest("Las contraseñas no coinciden.");
             
             if (!Drive.Models.User.ValidatePassword(dto.Password)) // pasa la contraseña por el validador estricto de caracteres
-                return BadRequest("Password must have at least 8 characters, an uppercase, a lowercase, a number, and a special character.");
+                return BadRequest("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.");
 
             userToEdit.Password = Drive.Models.User.GetHash(dto.Password); // actualiza el campo guardando el nuevo hash md5
         }
@@ -131,7 +131,7 @@ public class UserController : ControllerBase
 
         await _context.SaveChangesAsync(); // guarda la edición final en la tabla
         
-        return Ok(new { message = "User updated successfully." });
+        return Ok(new { message = "Usuario actualizado correctamente." });
     }
 
     // ==========================================
@@ -142,12 +142,12 @@ public class UserController : ControllerBase
     public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusDto dto)
     {
         var user = await _context.Users.FindAsync(id); // localiza al usuario por su id
-        if (user == null) return NotFound("User not found.");
+        if (user == null) return NotFound("Usuario no encontrado.");
 
         user.IsActive = dto.IsActive; // modifica directamente la bandera booleana de estado activa/inactiva
         await _context.SaveChangesAsync(); // guarda el cambio de estado en la base de datos
         
-        return Ok(new { message = "Status updated successfully." });
+        return Ok(new { message = "Estado actualizado correctamente." });
     }
 
     // ==========================================
@@ -158,12 +158,12 @@ public class UserController : ControllerBase
     public async Task<IActionResult> UpdateRole(int id, [FromBody] UpdateRoleDto dto)
     {
         var user = await _context.Users.FindAsync(id); // busca al usuario en la tabla
-        if (user == null) return NotFound("User not found.");
+        if (user == null) return NotFound("Usuario no encontrado.");
 
         user.Role = dto.Role.ToLower(); // asigna el rol normalizado en minúsculas sin alterar el resto de columnas
         await _context.SaveChangesAsync(); // persiste la mutación del rol
         
-        return Ok(new { message = "Role updated successfully." });
+        return Ok(new { message = "Rol actualizado correctamente." });
     }
 
     // ==========================================
