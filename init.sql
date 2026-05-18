@@ -62,3 +62,14 @@ CREATE INDEX idx_directories_parent_id ON Directories(parent_id);
 CREATE INDEX idx_files_user_id         ON Files(user_id);
 CREATE INDEX idx_files_directory_id    ON Files(directory_id);
 CREATE INDEX idx_files_type            ON Files(type);
+
+INSERT INTO Users (name, email, password, birth_date, role, is_active)
+VALUES (
+    'Administrador Global', 
+    'admin@sistema.com', 
+    ' 20-2C-B9-62-AC-59-07-5B-96-4B-07-15-2D-23-4B-70', 
+    '1990-01-01', 
+    'admin', 
+    TRUE
+)
+ON CONFLICT (email) DO NOTHING;
