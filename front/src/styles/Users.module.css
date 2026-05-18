@@ -195,3 +195,27 @@
 .btnSave:hover {
   background-color: #1b66c9 !important;
 }
+
+/* Botón de Registrar Usuario */
+.btnRegisterUser {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #81a5f5; /* Un azul moderno y profesional */
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btnRegisterUser:hover {
+  background-color: #7599ff; /* Azul un poco más oscuro al pasar el cursor */
+}
+
+.btnRegisterUser:active {
+  transform: scale(0.98); /* Pequeño efecto de click */
+}
