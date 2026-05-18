@@ -67,7 +67,7 @@ INSERT INTO Users (name, email, password, birth_date, role, is_active)
 VALUES (
     'Administrador Global', 
     'admin@sistema.com', 
-    ' 20-2C-B9-62-AC-59-07-5B-96-4B-07-15-2D-23-4B-70', 
+    '20-2C-B9-62-AC-59-07-5B-96-4B-07-15-2D-23-4B-70', 
     '1990-01-01', 
     'admin', 
     TRUE
