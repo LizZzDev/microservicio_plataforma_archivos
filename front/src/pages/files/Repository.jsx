@@ -220,7 +220,7 @@ const Repository = () => {
         
         <div style={{ display: "flex", gap: "0.5rem" }}>
           <button className={styles.btn} onClick={handleCreateFolder}>
-            <Plus size={18} /> Nueva Carpeta
+            <Plus size={18} /> Nueva carpeta
           </button>
 
           <input 
@@ -234,7 +234,7 @@ const Repository = () => {
             style={{ backgroundColor: "#3E5C76" }} 
             onClick={onUploadClick}
           >
-            <Upload size={18} /> Subir Archivo
+            <Upload size={18} /> Subir archivo
           </button>
         </div>
       </div>

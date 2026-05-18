@@ -104,23 +104,23 @@ const Profile = () => {
         <div className={styles.rightPanel}>
           
           <div className={styles.section}>
-            <h3>Información de la Cuenta</h3>
+            <h3>Información de la cuenta</h3>
             
             {/* cuadricula organizada con los valores del usuario */}
             <div className={styles.dataGrid}>
               
               <div className={styles.field}>
-                <span className={styles.label}>Correo Electrónico</span>
+                <span className={styles.label}>Correo electrónico</span>
                 <div className={styles.valueBox}>{userData.email}</div>
               </div>
 
               <div className={styles.field}>
-                <span className={styles.label}>Fecha de Nacimiento</span>
+                <span className={styles.label}>Fecha de nacimiento</span>
                 <div className={styles.valueBox}>{userData.birthdate}</div>
               </div>
               
               <div className={styles.field}>
-                <span className={styles.label}>Estado de la Cuenta</span>
+                <span className={styles.label}>Estado de la cuenta</span>
                 {/* cambia el estilo visual dependiendo de si la cuenta esta activa o no */}
                 <div className={userData.status === "Activado" ? styles.valueBoxActive : styles.valueBoxInactive}>
                   <span className={styles.statusDot}></span>
@@ -129,7 +129,7 @@ const Profile = () => {
               </div>
 
               <div className={styles.field}>
-                <span className={styles.label}>Fecha de Registro</span>
+                <span className={styles.label}>Fecha de registro</span>
                 <div className={styles.valueBox}>{userData.registeredAt}</div>
               </div>
 

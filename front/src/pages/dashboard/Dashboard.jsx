@@ -89,7 +89,7 @@ const Dashboard = () => {
 
       {/* seccion inferior para visualizar la actividad reciente de la plataforma */}
       <div className={styles.recentSection}>
-        <h3><Activity size={20} /> Agregado Recientemente</h3>
+        <h3><Activity size={20} /> Agregado recientemente</h3>
         
         {loading ? (
           <p>Cargando actividad...</p>

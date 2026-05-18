@@ -68,7 +68,7 @@ const Login = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2>Iniciar Sesión</h2>
-      <Input label="Correo Electrónico" name="email" value={form.email} onChange={handleChange} />
+      <Input label="Correo electrónico" name="email" value={form.email} onChange={handleChange} />
       <Input label="Contraseña" type="password" name="password" value={form.password} onChange={handleChange} />
       {error && (
         <p style={{ color: "red", fontSize: "0.8rem", textAlign: "center" }}>{error}</p>
