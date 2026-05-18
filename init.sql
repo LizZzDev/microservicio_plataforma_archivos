@@ -56,7 +56,7 @@ CREATE TABLE Files (
 
 -- =========================
 -- ÍNDICES
-do-- =========================
+-- =========================
 CREATE INDEX idx_directories_user_id   ON Directories(user_id);
 CREATE INDEX idx_directories_parent_id ON Directories(parent_id);
 CREATE INDEX idx_files_user_id         ON Files(user_id);
