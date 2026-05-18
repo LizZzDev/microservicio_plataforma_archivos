@@ -29,7 +29,7 @@ CREATE TABLE Directories (
     CONSTRAINT fk_directories_parent
         FOREIGN KEY (parent_id) REFERENCES Directories(id) ON DELETE CASCADE,
     CONSTRAINT uq_directory_name_per_parent
-        UNIQUE NULLS NOT DISTINCT (user_id, parent_id, name)
+        UNIQUE NULLS NOT DISTINCT (parent_id, name) 
 );
 
 -- =========================
@@ -56,7 +56,6 @@ CREATE TABLE Files (
 
 -- =========================
 -- ÍNDICES
--- (email ya cubierto por uq_users_email UNIQUE)
 -- =========================
 CREATE INDEX idx_directories_user_id   ON Directories(user_id);
 CREATE INDEX idx_directories_parent_id ON Directories(parent_id);
