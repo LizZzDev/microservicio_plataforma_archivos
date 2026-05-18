@@ -7,7 +7,6 @@ const Users = () => {
   // obtiene los datos del usuario logueado desde el contexto global
   const { user } = useAuth();
   
-  // 🛡️ CORRECCIÓN CRÍTICA: Convertimos a Number para evitar fallos de tipo string vs int
   const currentAdminId = Number(user?.id) || 0; 
   
   // estado para almacenar la lista completa de usuarios traida desde el servidor
@@ -87,18 +86,28 @@ const Users = () => {
   const [limit, setLimit] = useState(5);
 
   // filtra el arreglo completo de usuarios basándose en las condiciones de la barra superior
-  const filtered = users.filter(u => 
-    (u.name.toLowerCase().includes(f.search.toLowerCase()) || u.email.toLowerCase().includes(f.search.toLowerCase())) &&
-    (!f.role || u.role.toLowerCase() === f.role.toLowerCase()) && 
-    (!f.status || u.status === f.status) && 
-    (!f.birthdate || u.birthdate.includes(f.birthdate))
-  );
+const filtered = users.filter(u => {
+  const searchMatch = !f.search || 
+    (u.name?.toLowerCase().includes(f.search.toLowerCase()) || 
+     u.email?.toLowerCase().includes(f.search.toLowerCase()));
+
+  const roleMatch = !f.role || u.role?.toLowerCase() === f.role.toLowerCase();
+  
+  const statusMatch = !f.status || u.status === f.status;
+  
+  const birthdateMatch = !f.birthdate || u.birthdate?.includes(f.birthdate);
+
+  return searchMatch && roleMatch && statusMatch && birthdateMatch;
+});
 
   const total = Math.ceil(filtered.length / limit);
   const paginated = filtered.slice((page - 1) * limit, page * limit);
 
+  useEffect(() => {
+  setPage(1);
+}, [f, limit]);
+
   const toggle = async (id, field, v1, v2) => {
-    // 🛡️ CORRECCIÓN CRÍTICA: Forzamos la conversión a número antes de comparar
     if (Number(id) === currentAdminId) {
       alert("No puedes modificar tu propio rol o estado de administrador.");
       return;
@@ -197,7 +206,6 @@ const Users = () => {
     }
   };
 
-  // 🆕 FUNCIÓN: Procesa el envío del formulario de registro
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
