@@ -48,11 +48,10 @@ public class DirectoriesController : ControllerBase
 
         var exists = await _context.Directories.AnyAsync(d => 
             d.ParentId == request.ParentId && 
-            d.Name == request.Name &&
-            d.UserId == request.UserId); // busca si el mismo usuario ya tiene esa carpeta en ese nivel
+            d.Name.ToLower() == request.Name.ToLower());
 
         if (exists) // si el resultado es verdadero, frena el flujo para evitar duplicados
-            return BadRequest("Ya existe una carpeta con ese nombre en esta ubicación.");
+            return BadRequest("Ya existe una carpeta con ese nombre en esta ubicación creada por otro usuario.");
 
         var newDirectory = new DirectoryItem
         {
