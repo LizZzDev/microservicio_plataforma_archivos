@@ -1,0 +1,197 @@
+/* =========================================
+   CONTENEDOR Y HEADER
+========================================= */
+.container { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.header h2 { margin: 0; font-size: 1.8rem; color: #111; }
+.header p { margin: 0.2rem 0 0; color: #666; }
+
+/* =========================================
+   TOOLBAR Y FILTROS
+========================================= */
+.toolbar, .filters { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+.filters input, .filters select, .pageSize select {
+  padding: 0.5rem 0.8rem; border-radius: 8px; border: 1px solid #ddd; outline: none; transition: 0.2s;
+}
+/* 👇 Aquí hacemos la barra de búsqueda más corta */
+.filters input { width: 220px; } 
+.filters input:focus, .filters select:focus { border-color: #2f80ed; }
+.pageSize { display: flex; gap: 0.5rem; color: #666; font-size: 0.9rem; align-items: center; }
+
+/* =========================================
+   TABLA
+========================================= */
+.table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  border-radius: 12px; 
+  overflow: hidden; 
+}
+
+.table thead { 
+  background: rgba(0, 0, 0, 0.075); 
+}
+.table th, .table td { 
+  padding: 0.8rem 1.9rem; 
+  text-align: left; 
+  vertical-align: middle;
+  font-weight: 400; 
+}
+
+.table tbody tr { 
+  transition: 0.2s; 
+  background: rgba(243, 243, 243, 0.719); 
+}
+
+.table tbody tr:hover { 
+  background: rgba(0,0,0,0.04); 
+}
+
+.table tbody tr:not(:last-child) { 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.137); 
+}
+/* Empuja el título "Acciones" a la derecha */
+.actionsHeader { 
+  text-align: right !important; 
+}
+
+/* =========================================
+   IDENTIDAD, BADGES Y ESTADO
+========================================= */
+.userInfo { display: flex; align-items: center; gap: 0.8rem; }
+.avatar { width: 35px; height: 35px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.name { font-weight: 600; color: #222; font-size: 0.9rem; }
+.email { color: #666; font-size: 0.8rem; margin-top: 0.1rem; }
+
+/* Agrupamos los badges para ahorrar código */
+.badgeAdmin, .badgeUser { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.6rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; }
+.badgeAdmin { background: #fff4e5; color: #d35400; }
+.badgeUser { background: #e3f2fd; color: #2f80ed; }
+
+.statusActive, .statusInactive { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 500; font-size: 0.85rem; }
+.statusActive { color: #27ae60; }
+.statusInactive { color: #eb5757; }
+.statusDot { width: 8px; height: 8px; border-radius: 50%; }
+.statusActive .statusDot { background: #27ae60; }
+.statusInactive .statusDot { background: #eb5757; }
+
+/* =========================================
+   BOTONES DE ACCIÓN
+========================================= */
+.actionsCol { text-align: right; }
+.actionGroup { display: flex; gap: 0.5rem; justify-content: flex-end; }
+.btnAction {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; border: 1px solid transparent; min-width: 130px; transition: 0.2s;
+}
+
+/* Colores base */
+.btnMakeAdmin { background: #fdf0e6; color: #e67e22; border-color: #fbd6b9; }
+.btnRevoke { background: #fff; color: #666; border-color: #ddd; }
+.btnDeactivate { background: #fcebeb; color: #eb5757; border-color: #fad4d4; }
+.btnActivate { background: #e9f7ef; color: #27ae60; border-color: #c3e6cb; }
+
+
+/* =========================================
+   PAGINACIÓN
+========================================= */
+.pagination { display: flex; justify-content: center; align-items: center; margin-top: 1rem; gap: 1rem; }
+.pagination button { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #ddd; background: white; cursor: pointer; transition: 0.2s; }
+.pagination button:hover:not(:disabled) { background: #dddcdc; }
+.pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Nuevo botón para editar */
+.btnEdit { background: #f0f4f8; color: #334155; border-color: #cbd5e1; }
+/* Acuérdate también de agregar el estilo para cuando el botón está disabled (para el Admin actual) */
+.btnAction:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* =========================================
+   MODAL DE EDICION DE USUARIOS
+========================================= */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+  color: #111;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modalBox h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  color: #111;
+}
+
+.fieldGroup {
+  margin-bottom: 1rem;
+}
+
+.fieldGroup label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.fieldGroup input, .fieldGroup select {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.fieldGroup input:focus, .fieldGroup select:focus {
+  border-color: #2f80ed;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.modalActions button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background: white;
+  transition: 0.2s;
+}
+
+.modalActions button:first-child:hover {
+  background: #f5f5f5;
+}
+
+.btnSave {
+  background-color: #2f80ed !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btnSave:hover {
+  background-color: #1b66c9 !important;
+}

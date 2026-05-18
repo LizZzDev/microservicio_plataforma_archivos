@@ -1,0 +1,153 @@
+/* Contenedor Principal */
+.container {
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header h2 {
+  margin: 0 0 0.4rem 0;
+  color: #222;
+}
+
+.header p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* LA TARJETA PRINCIPAL */
+.card {
+  display: flex;
+  background: rgba(243, 243, 243, 0.719);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* --- PANEL IZQUIERDO --- */
+.leftPanel {
+  width: 260px;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  margin-bottom: 1.2rem;
+}
+
+.username { margin: 0 0 0.5rem 0; font-size: 1.3rem; color: #222; }
+
+.badge {
+  background: white;
+  color: #555;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* --- PANEL DERECHO --- */
+.rightPanel {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.section h3 { margin: 0 0 1.5rem 0; font-size: 1.1rem; color: #222; }
+
+/* Grid 2x2 para los datos */
+.dataGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Cajas de lectura */
+.valueBox, .valueBoxActive, .valueBoxInactive {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  font-size: 0.95rem;
+  color: #222;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #27ae60;
+}
+
+.valueBoxInactive .statusDot { background: #eb5757; }
+
+
+.securitySection {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.securitySection h4 { margin: 0 0 0.2rem 0; color: #222; font-size: 1rem; }
+.securitySection p { margin: 0; color: #666; font-size: 0.9rem; }
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn:hover { background: #f0f0f0; }

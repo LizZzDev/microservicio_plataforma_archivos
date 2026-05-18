@@ -1,0 +1,136 @@
+/* Contenedor principal */
+.container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Cabecera */
+.header h2 {
+  margin: 0 0 0.4rem 0;
+  color: #222;
+}
+
+.header p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* --- Tarjetas de Resumen --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  background: rgba(243, 243, 243, 0.719); 
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  color: #444;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.statInfo h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.statInfo span {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* --- Lista de Archivos Recientes --- */
+.recentSection h3 {
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background: rgba(243, 243, 243, 0.4);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.recentItem:hover {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Contenido interno del item de la lista */
+.fileMain {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+}
+
+.fileMeta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.85rem;
+  color: #666;
+  flex: 2;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Botón de descarga minimalista */
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s;
+}
+
+.downloadBtn:hover {
+  background: #f0f0f0;
+  border-color: #bbb;
+  color: #000;
+}

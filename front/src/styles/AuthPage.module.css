@@ -1,0 +1,127 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #D9D9D8;
+  background: radial-gradient(circle,rgba(217, 217, 216, 1) 0%, rgba(116, 140, 171, 1) 34%, rgba(13, 19, 33, 1) 100%);
+}
+
+/* CARD */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 65rem; 
+  min-height: 34rem;
+  background: white;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.281);
+  background: linear-gradient(135deg, #1D2D44, #748CAB);
+}
+
+/* FORM */
+.formContainer {
+  width: 50%;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.6s ease;
+  overflow-y: auto;
+  background: white;
+    z-index: 2;
+}
+
+/* PANEL */
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50.1%;
+  height: 100.1%;
+  background: linear-gradient(135deg, #1D2D44, #748CAB);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.7s ease;
+}
+
+/* CONTENIDO */
+.overlayContent {
+  width: 60%;
+  text-align: center;
+}
+
+.overlayContent h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.overlayContent p {
+  opacity: 0.8;
+  margin-bottom: 1.2rem;
+}
+
+/* BOTÓN PANEL */
+.overlayContent button {
+  padding: 0.75rem 1.6rem;
+  border-radius: 2rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.03rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.overlayContent button:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.8);
+  transform: translateY(-2px);
+}
+
+.overlayContent button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ANIMACIÓN */
+.card.active .overlay {
+  transform: translateX(-100%);
+}
+
+.card.active .formContainer {
+  transform: translateX(100%);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 2rem;
+    transform: none !important;
+  }
+
+  .overlay {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+
+    transform: none !important;
+  }
+
+  .overlayContent {
+    width: 100%;
+  }
+}

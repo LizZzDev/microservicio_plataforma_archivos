@@ -1,0 +1,19 @@
+.form {
+  width: 100%;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form h2 {
+  font-size: 26px;
+  text-align: center;
+}
+
+.form p {
+  font-size: 14px;
+  text-align: center;
+  color: var(--gray);
+}

@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+input {
+  padding: 0.9rem;
+  border-radius: 0.8rem;
+  border: 1px solid #c0c0c0;
+  font-size: 0.9rem;
+  outline: none;
+  transition: 0.25s;
+}
+
+input:focus {
+  border-color: #748CAB;
+  box-shadow: 0 0 0 3px rgba(42, 76, 136, 0.219);
+}
